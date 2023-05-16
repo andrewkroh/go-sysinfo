@@ -177,7 +177,7 @@ var nullTerminator = []byte{0}
 // callbacks params are optional,
 // up to the caller as to which pieces of data they want
 func kern_procargs(pid int, p *process) error {
-	data, err := unix.SysctlRaw("kern.procargs2", pid)
+	data, err := sysctlRaw("kern.procargs2", pid)
 	if err != nil {
 		if errors.Is(err, syscall.EINVAL) {
 			// sysctl returns "invalid argument" for both "no such process"
